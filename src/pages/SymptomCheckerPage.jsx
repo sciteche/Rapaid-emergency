@@ -12,7 +12,7 @@ import { useApiKey } from '@/contexts/ApiKeyContext';
 
 const SymptomCheckerPage = () => {
   const { t } = useTranslation();
-  const { isConfigured, openModal } = useApiKey();
+  const { apiKey, isConfigured, openModal } = useApiKey();
   const [symptoms, setSymptoms] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState(null);
@@ -40,7 +40,7 @@ const SymptomCheckerPage = () => {
     setIsAnalyzing(true);
     
     try {
-      const analysis = await analyzeSymptoms(symptoms); 
+      const analysis = await analyzeSymptoms(symptoms, apiKey); 
       
       if (analysis) {
         setResults(analysis); 

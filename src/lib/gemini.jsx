@@ -1,11 +1,14 @@
 import React from 'react';
 
-const API_KEY = "AIzaSyBWWcAUdFHKpz3__NkCtLtVeYs6oKrv-Mo";
 const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
-export async function analyzeSymptoms(symptoms) {
+export async function analyzeSymptoms(symptoms, apiKey) {
+  if (!apiKey) {
+    throw new Error('API key is required');
+  }
+  
   try {
-    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+    const response = await fetch(`${API_URL}?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -83,9 +86,13 @@ export async function analyzeSymptoms(symptoms) {
   }
 }
 
-export async function getChatResponse(message) {
+export async function getChatResponse(message, apiKey) {
+  if (!apiKey) {
+    throw new Error('API key is required');
+  }
+  
   try {
-    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+    const response = await fetch(`${API_URL}?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

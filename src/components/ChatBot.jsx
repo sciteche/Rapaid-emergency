@@ -8,7 +8,7 @@ import { getChatResponse } from '@/lib/gemini';
 import { useApiKey } from '@/contexts/ApiKeyContext';
 
 const ChatBot = () => {
-  const { isConfigured, openModal } = useApiKey();
+  const { apiKey, isConfigured, openModal } = useApiKey();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -46,7 +46,7 @@ const ChatBot = () => {
     setIsLoading(true);
 
     try {
-      const response = await getChatResponse(userMessage);
+      const response = await getChatResponse(userMessage, apiKey);
       if (response) {
         setMessages(prev => [...prev, { type: 'bot', content: response }]);
       } else {
