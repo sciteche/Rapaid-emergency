@@ -1,0 +1,1 @@
+export { useSearch, SearchProvider } from './SearchContext.jsx';

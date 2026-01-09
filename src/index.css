@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grass-green: #7ed957;
+  --dark-blue: #020bb5;
+  --red: #ff3131;
+  --white: #ffffff;
+  
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 126 65% 58%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 126 65% 58%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 220 40% 5%; /* Darker blue-slate */
+  --foreground: 210 40% 98%; /* Light gray for text */
+  --card: 220 30% 10%; /* Slightly lighter card background for depth */
+  --card-foreground: 210 40% 98%;
+  --popover: 220 40% 5%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 126 65% 58%; /* RapAID Green */
+  --primary-foreground: 220 40% 5%; /* Dark text on primary buttons */
+  --secondary: 220 30% 15%; /* Darker secondary elements */
+  --secondary-foreground: 210 40% 98%;
+  --muted: 220 30% 15%;
+  --muted-foreground: 215 20.2% 65.1%; /* Lighter muted text */
+  --accent: 220 30% 15%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 70% 50%; /* Adjusted destructive red */
+  --destructive-foreground: 210 40% 98%;
+  --border: 220 30% 20%; /* Softer border color */
+  --input: 220 30% 15%;
+  --ring: 126 65% 58%; /* RapAID Green for focus rings */
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  background: linear-gradient(to bottom, hsl(var(--background)), hsl(220 40% 7%)); /* Smoother gradient */
+  color: hsl(var(--foreground));
+}
+
+/* General Dark Mode Card Styling (Glassmorphism) */
+.dark .card, 
+.dark .card-hover {
+  background: hsla(var(--card) / 0.6); /* Use HSL for card bg with alpha */
+  border: 1px solid hsla(var(--border) / 0.5); /* Use HSL for border with alpha */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.dark .card:hover,
+.dark .card-hover:hover {
+  background: hsla(var(--card) / 0.8);
+  border-color: hsla(var(--border) / 0.7);
+  transform: translateY(-2px);
+}
+
+/* Specific sections styling for dark mode */
+.dark .hero-section {
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)),
+              radial-gradient(circle at top right, rgba(126, 217, 87, 0.1), transparent 70%),
+              radial-gradient(circle at bottom left, rgba(2, 11, 181, 0.1), transparent 70%);
+}
+
+.dark .emergency-card {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.dark .emergency-button {
+  background: linear-gradient(90deg, hsl(var(--destructive)) 0%, #ff5757 100%);
+  color: hsl(var(--destructive-foreground));
+}
+
+.dark input,
+.dark textarea,
+.dark .search-bar {
+  background: hsla(var(--input) / 0.6);
+  border: 1px solid hsla(var(--border) / 0.5);
+  color: hsl(var(--foreground));
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark .search-bar:focus {
+  background: hsla(var(--input) / 0.8);
+  border-color: hsl(var(--ring)); /* Use ring color for focus */
+}
+
+.dark .badge {
+  background: hsla(var(--secondary) / 0.6);
+  border: 1px solid hsla(var(--border) / 0.3);
+  color: hsl(var(--secondary-foreground));
+}
+
+.dark .step-indicator {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #5fb83e 100%);
+}
+
+.floating-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: hsla(var(--background) / 0.8);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsla(var(--border) / 0.5);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsla(var(--border) / 0.7);
+}
+
+/* Emergency Guide Specific Styles for Dark Mode */
+.dark .guide-step {
+  background: hsla(var(--card) / 0.6);
+  border: 1px solid hsla(var(--border) / 0.5);
+}
+
+.guide-step-number { /* No change needed, already good */
+  @apply absolute -left-4 -top-4 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm;
+  background: linear-gradient(135deg, var(--grass-green) 0%, #5fb83e 100%);
+}
+
+.dark .guide-warning {
+  background: hsla(0 70% 50% / 0.1); /* Use HSL for destructive color with alpha */
+  border: 1px solid hsla(0 70% 50% / 0.2);
+  color: hsl(0 70% 80%); /* Lighter text for warnings */
+}
+.dark .guide-warning h4 {
+  color: hsl(0 70% 90%);
+}
+
+
+.dark .guide-tips {
+  background: hsla(var(--primary) / 0.1);
+  border: 1px solid hsla(var(--primary) / 0.2);
+  color: hsl(var(--primary) / 0.8); /* Slightly muted primary for tips text */
+}
+.dark .guide-tips h4 {
+  color: hsl(var(--primary));
+}
+
+
+/* Common Emergency Cards on Category/Detail Pages */
+.dark .emergency-category-card { /* This class seems to be used on HomePage.jsx */
+  background: hsla(var(--card) / 0.6);
+  border: 1px solid hsla(var(--border) / 0.5);
+}
+
+.dark .emergency-category-card:hover {
+  background: hsla(var(--card) / 0.8);
+  border-color: hsla(var(--border) / 0.7);
+}
+
+/* Ensure text colors are light in dark mode for these pages */
+.dark .bg-gray-50 { /* Used as page background on CategoryDetailPage */
+  background-color: hsl(var(--background)) !important; /* Override for specific pages if needed */
+}
+
+.dark .bg-white { /* Used for header sections on Category pages */
+   background-color: hsl(var(--card) / 0.3) !important; /* Or a slightly transparent card color for headers */
+   border-bottom-color: hsla(var(--border) / 0.5) !important;
+}
+
+.dark .text-gray-900 {
+  color: hsl(var(--foreground)) !important;
+}
+.dark .text-gray-800 {
+  color: hsl(var(--foreground)) !important;
+}
+.dark .text-gray-700 {
+  color: hsl(var(--muted-foreground)) !important;
+}
+.dark .text-gray-600 {
+  color: hsl(var(--muted-foreground)) !important;
+}
+.dark .text-gray-500 {
+  color: hsl(var(--muted-foreground) / 0.8) !important;
+}
+.dark .text-gray-400 {
+  color: hsl(var(--muted-foreground) / 0.7) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: hsla(var(--border) / 0.5) !important;
+}
+
+.dark .bg-yellow-50 { /* For disclaimer sections */
+  background-color: hsla(48, 95%, 50%, 0.05) !important; /* Very subtle yellow */
+  border-color: hsla(48, 95%, 50%, 0.1) !important;
+}
+.dark .text-yellow-800 {
+  color: hsl(48, 95%, 70%) !important;
+}
+.dark .text-yellow-700 {
+  color: hsl(48, 95%, 60%) !important;
+}
+
+.dark .text-\[\#7ed957\] { /* RapAID Green for links */
+  color: hsl(var(--primary)) !important;
+}
+.dark .hover\:text-\[\#7ed957\]\/80:hover {
+  color: hsl(var(--primary) / 0.8) !important;
+}
+
+/* For badges on category detail to respect dark mode correctly */
+.dark .bg-red-100.text-red-800 {
+  background-color: hsla(0, 70%, 50%, 0.2) !important;
+  color: hsl(0, 70%, 85%) !important;
+  border-color: hsla(0, 70%, 50%, 0.3) !important;
+}
+.dark .bg-orange-100.text-orange-800 {
+  background-color: hsla(30, 70%, 50%, 0.2) !important;
+  color: hsl(30, 70%, 85%) !important;
+  border-color: hsla(30, 70%, 50%, 0.3) !important;
+}
+.dark .bg-yellow-100.text-yellow-800 {
+  background-color: hsla(48, 70%, 50%, 0.2) !important;
+  color: hsl(48, 70%, 85%) !important;
+  border-color: hsla(48, 70%, 50%, 0.3) !important;
+}
+.dark .bg-green-100.text-green-800 {
+  background-color: hsla(120, 60%, 50%, 0.2) !important;
+  color: hsl(120, 60%, 85%) !important;
+  border-color: hsla(120, 60%, 50%, 0.3) !important;
+}
+.dark .bg-gray-100.text-gray-800 {
+  background-color: hsla(var(--secondary) / 0.6) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+  border-color: hsla(var(--border) / 0.3) !important;
+}
